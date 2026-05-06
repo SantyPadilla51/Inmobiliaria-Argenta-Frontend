@@ -48,9 +48,10 @@ export const getPropiedades = async (filtros: {
   if (filtros.tipo) params.append("tipo", filtros.tipo);
   if (filtros.operacion) params.append("operacion", filtros.operacion);
 
-  const url = `http://localhost:5000/propiedades?${params.toString()}`;
+  const url = `https://backend-inmobiliaria-argenta.vercel.app/propiedades/?${params.toString()}`;
 
   const response = await fetch(url);
+
   if (!response.ok) throw new Error("Error al obtener datos");
 
   const data = await response.json();
