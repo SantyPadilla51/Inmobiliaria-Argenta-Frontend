@@ -48,7 +48,7 @@ export const getPropiedades = async (filtros: {
   if (filtros.tipo) params.append("tipo", filtros.tipo);
   if (filtros.operacion) params.append("operacion", filtros.operacion);
 
-  const url = `https://backend-inmobiliaria-argenta-29hw3bece-santypadilla51s-projects.vercel.app?${params.toString()}`;
+  const url = `https://backend-inmobiliaria-argenta.vercel.app?${params.toString()}`;
 
   const response = await fetch(url);
   if (!response.ok) throw new Error("Error al obtener datos");
