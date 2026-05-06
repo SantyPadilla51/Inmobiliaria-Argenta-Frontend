@@ -50,6 +50,8 @@ export default function TasacionesForm() {
   });
 
   function onSubmit(data: z.infer<typeof tasacionSchema>) {
+    console.log(data);
+
     toast.success("Solicitud enviada", {
       description: "Un asesor te contactará pronto.",
       position: "bottom-right",
