@@ -31,7 +31,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-8">
             <aside className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-200">
+                <div className=" ">
                   <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
                     <svg
                       className="w-4 h-4"

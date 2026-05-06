@@ -21,7 +21,9 @@ export function PropertyDetail() {
     try {
       setLoading(true);
 
-      const req = await fetch(`http://localhost:5000/propiedades/${id}`);
+      const req = await fetch(
+        `https://backend-inmobiliaria-argenta.vercel.app/propiedades/${id}`,
+      );
 
       if (!req.ok) {
         throw new Error("No se pudo obtener la propiedad");
