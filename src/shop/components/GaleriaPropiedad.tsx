@@ -20,7 +20,7 @@ const GaleriaPropiedad = ({ prop }: { prop: any }) => {
 
   return (
     <>
-      <div className="max-w-300 mx-auto px-4 grid grid-cols-4 grid-rows-2 gap-2 h-125 rounded-2xl overflow-hidden">
+      <div className="max-w-300 mx-auto px-4 lg:grid lg:grid-cols-4 lg:grid-rows-2 gap-2 h-50 rounded-2xl overflow-hidden">
         {/* Imagen Principal (Índice 0) */}
         <div
           className="col-span-2 row-span-2 relative group cursor-pointer overflow-hidden"

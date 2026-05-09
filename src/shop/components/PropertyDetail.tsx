@@ -1,19 +1,19 @@
-import { BedDouble, Bath, Car, MapPin, ChevronLeft } from "lucide-react";
+import { BedDouble, Bath, Car, MapPin, ChevronLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import type { Propiedad } from "../actions/propiedades";
+import { AgendarVisita } from "../pages/AgendarVisita";
 import { MapByAddress } from "./Map";
+import type { Propiedad } from "../actions/propiedades";
 import GaleriaPropiedad from "./GaleriaPropiedad";
 import CustomHeader from "./CustomHeader";
 import CustomCard from "./CustomCard";
 import Footer from "./Footer";
-import { AgendarVisita } from "../pages/AgendarVisita";
 
 export function PropertyDetail() {
-  const [prop, setProp] = useState<Propiedad | null>(null);
+  const [prop, setProp] = useState<Propiedad>();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
@@ -94,7 +94,7 @@ export function PropertyDetail() {
 
       <GaleriaPropiedad prop={prop} />
 
-      <main className="max-w-300 mx-auto px-4 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <main className="max-w-300 mx-auto px-4 mt-8 lg:grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 space-y-8">
           <div>
             <Badge className="bg-blue-100 text-blue-600 border border-blue-700 hover:bg-blue-100  px-4 py-1 capitalize">
@@ -112,7 +112,7 @@ export function PropertyDetail() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-slate-100">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-slate-100">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-slate-50 rounded-lg text-slate-600">
                 <BedDouble size={20} />
@@ -152,48 +152,57 @@ export function PropertyDetail() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="w-80 lg:space-y-4">
             <h3 className="text-2xl font-bold text-slate-900">Descripción</h3>
             <p className="text-slate-600 leading-relaxed text-lg">
               {prop.descripcion}
             </p>
           </div>
 
-          <div className="space-y-4 pt-4">
+          <div className=" lg:space-y-4 pt-4">
             <h3 className="text-2xl font-bold text-slate-900">Amenities</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {prop.amenities && prop.amenities.length > 0
                 ? prop.amenities.map((item, index) => (
-                    <div key={index}>{item}</div>
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 text-sm text-gray-700 capitalize"
+                    >
+                      <Check
+                        className="w-4 h-4 text-green-500"
+                        strokeWidth={3}
+                      />
+                      <span>{item}</span>
+                    </div>
                   ))
                 : null}
             </div>
           </div>
+
+          <aside className="w-full mb-15 lg:col-span-1">
+            <div className="lg:sticky lg:top-28">
+              <Card className="shadow-2xl border-slate-100 rounded-none overflow-hidden">
+                <CardContent className="p-8 space-y-6">
+                  <div className="space-y-1">
+                    <p className=" font-medium italic text-white">
+                      Precio de {prop.operacion}
+                    </p>
+                    <p className="text-3xl lg:text-5xl font-black text-white">
+                      $ {formatCurrency(prop.precio)}
+                    </p>
+                    <p className="text-sm text-green-600 font-bold tracking-tight mt-2">
+                      Valor de expensas $ {formatCurrency(prop.expensas)}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 pt-4 border-t border-slate-100">
+                    <AgendarVisita title={prop.titulo} />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </aside>
         </div>
-
-        <aside className="lg:col-span-1">
-          <div className="sticky top-28">
-            <Card className="shadow-2xl border-slate-100 rounded-none overflow-hidden">
-              <CardContent className="p-8 space-y-6">
-                <div className="space-y-1">
-                  <p className=" font-medium italic text-white">
-                    Precio de {prop.operacion}
-                  </p>
-                  <p className="text-5xl font-black text-white">
-                    $ {formatCurrency(prop.precio)}
-                  </p>
-                  <p className="text-sm text-green-600 font-bold tracking-tight mt-2">
-                    Valor de expensas $ {formatCurrency(prop.expensas)}
-                  </p>
-                </div>
-
-                <div className="space-y-4 pt-4 border-t border-slate-100">
-                  <AgendarVisita title={prop.titulo} />
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </aside>
 
         <div className="w-full col-start-1 col-end-4 z-10">
           <h1 className="mb-3">Ubicación de la Propiedad</h1>
@@ -213,7 +222,11 @@ export function PropertyDetail() {
             Propiedades similares que te pueden interesar
           </h2>
 
-          <CustomCard limit={3} forceOperacion={prop.operacion} />
+          <CustomCard
+            tipo={prop?.tipo}
+            barrio={prop?.barrio}
+            operacion={prop.operacion}
+          />
         </div>
       </main>
 

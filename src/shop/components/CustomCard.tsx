@@ -14,42 +14,40 @@ import { Link, useSearchParams } from "react-router-dom";
 import { PropiedadFoto } from "../components/PropiedadFoto";
 
 interface CustomCardProps {
-  limit?: number;
-  forceBarrio?: string | null;
-  forceTipo?: string | null;
-  forceOperacion?: string | null;
+  barrio?: string;
+  tipo?: string;
+  operacion?: string;
 }
 
-const CustomCard = ({
-  limit,
-  forceBarrio,
-  forceTipo,
-  forceOperacion,
-}: CustomCardProps) => {
+const CustomCard = ({ barrio, tipo, operacion }: CustomCardProps) => {
   const [propiedades, setPropiedades] = useState<Propiedad[]>([]);
   const [cargando, setCargando] = useState<boolean>(true);
   const [searchParams] = useSearchParams();
-  const barrio =
-    forceBarrio !== undefined ? forceBarrio : searchParams.get("barrio");
-  const tipo = forceTipo !== undefined ? forceTipo : searchParams.get("tipo");
-  const operacion = forceOperacion || searchParams.get("operacion") || "venta";
+  const tipoUrl = searchParams.get("tipo") || tipo || "departamento";
+  const barrioUrl = searchParams.get("barrio") || barrio || "";
+  const operacionUrl = searchParams.get("operacion") || operacion || "venta";
 
   useEffect(() => {
     const cargarDatos = async () => {
       setCargando(true);
+
       try {
-        const data = await getPropiedades({ barrio, tipo, operacion });
-        const resultado = limit ? data.slice(0, limit) : data;
-        setPropiedades(resultado);
+        const data = await getPropiedades({
+          barrio: barrioUrl,
+          tipo: tipoUrl,
+          operacion: operacionUrl,
+        });
+
+        setPropiedades(data);
+        console.log(data);
       } catch (error) {
         console.error("Error al cargar propiedades:", error);
       } finally {
         setCargando(false);
       }
     };
-
     cargarDatos();
-  }, [searchParams, forceBarrio, forceTipo, forceOperacion, limit]);
+  }, [searchParams]);
 
   if (cargando) return <p>Cargando propiedades...</p>;
 

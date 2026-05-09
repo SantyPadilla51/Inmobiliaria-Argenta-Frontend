@@ -1,8 +1,3 @@
-export interface ImagenPropiedad {
-  url?: string;
-  es_principal: boolean;
-}
-
 export interface Propiedad {
   id?: string;
   titulo: string;
@@ -17,7 +12,7 @@ export interface Propiedad {
   operacion: string;
   cochera: string;
   tipo: string;
-  imagenes: ImagenPropiedad[];
+  imagenes: string[];
   amenities: string[];
 }
 
@@ -34,19 +29,19 @@ export class PropiedadModelo implements Propiedad {
   operacion = "";
   cochera = "";
   tipo = "";
-  imagenes: ImagenPropiedad[] = [];
+  imagenes: string[] = [];
   amenities: string[] = [];
 }
 
 export const getPropiedades = async (filtros: {
-  barrio?: string | null;
-  tipo?: string | null;
-  operacion?: string | null;
-}): Promise<Propiedad[]> => {
+  barrio?: string;
+  tipo?: string;
+  operacion?: string;
+}) => {
   const params = new URLSearchParams();
-  if (filtros.barrio) params.append("barrio", filtros.barrio);
-  if (filtros.tipo) params.append("tipo", filtros.tipo);
-  if (filtros.operacion) params.append("operacion", filtros.operacion);
+  if (filtros.barrio) params.set("barrio", filtros.barrio);
+  if (filtros.tipo) params.set("tipo", filtros.tipo);
+  if (filtros.operacion) params.set("operacion", filtros.operacion);
 
   const url = `https://backend-inmobiliaria-argenta.vercel.app/propiedades/?${params.toString()}`;
 

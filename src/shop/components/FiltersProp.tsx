@@ -50,8 +50,8 @@ const FiltersProp = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-8 w-full">
-        <div className="space-y-3">
+      <div className="mx-auto w-60 flex flex-col gap-8 lg:w-full">
+        <div className="lg:space-y-3">
           <Label className="text-slate-900 font-bold text-sm uppercase tracking-wider">
             Operación
           </Label>

@@ -4,22 +4,44 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Button } from "../../components/ui/button";
+import { Menu } from "lucide-react";
 
 const CustomHeader = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleNavClick = (scrollTo?: number) => {
+    setOpen(false);
+    if (scrollTo) {
+      window.scrollTo({ top: scrollTo, behavior: "smooth" });
+    }
+  };
+
+  const navItems = [
+    { label: "Alquiler", to: "/?operacion=alquiler", scroll: 900 },
+    { label: "Venta", to: "/?operacion=venta", scroll: 900 },
+    { label: "Pozo", to: "/?operacion=pozo", scroll: 900 },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full bg-white text-black shadow-md">
       <div className="flex items-center justify-between h-16 px-8 max-w-350 mx-auto">
-        <Link
-          to="/"
-          className="flex items-center gap-2 transition-opacity hover:opacity-90"
-        >
-          <span className="hidden font-bold sm:inline-block text-xl tracking-tight ">
+        <Link to="/" className="flex items-center justify-center">
+          <span className=" font-bold sm:inline-block text-xl  ">
             Inmobiliaria Argenta
           </span>
         </Link>
 
-        {/* Navigation - Usando componentes de shadcn */}
+        {/* Navigation */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="space-x-1">
             <Link
@@ -81,6 +103,45 @@ const CustomHeader = () => {
             </Link>
           </NavigationMenuList>
         </NavigationMenu>
+
+        {/* {Menu Hamburguesa} */}
+        <div className="md:hidden">
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger>
+              <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Abrir menú</span>
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent side="right" className="w-300px sm:w-400px">
+              <SheetHeader>
+                <SheetTitle className="text-left">Menú</SheetTitle>
+              </SheetHeader>
+
+              <nav className="flex flex-col gap-4 mt-8 mx-5">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => handleNavClick(item.scroll)}
+                    className="text-lg font-medium transition-colors hover:text-primary border-b pb-2"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+
+                <Link
+                  to="/tasaciones"
+                  onClick={() => handleNavClick()}
+                  className="mt-4 flex h-11 items-center justify-center rounded-none border border-black px-6 text-sm font-semibold uppercase tracking-widest hover:bg-black hover:text-white transition-all"
+                >
+                  Tasaciones
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
