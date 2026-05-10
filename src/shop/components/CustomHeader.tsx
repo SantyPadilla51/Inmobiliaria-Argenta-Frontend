@@ -27,9 +27,9 @@ const CustomHeader = () => {
   };
 
   const navItems = [
-    { label: "Alquiler", to: "/?operacion=alquiler", scroll: 900 },
-    { label: "Venta", to: "/?operacion=venta", scroll: 900 },
-    { label: "Pozo", to: "/?operacion=pozo", scroll: 900 },
+    { label: "Alquiler", to: "/?operacion=alquiler", scroll: 1100 },
+    { label: "Venta", to: "/?operacion=venta", scroll: 1100 },
+    { label: "Pozo", to: "/?operacion=pozo", scroll: 1100 },
   ];
 
   return (

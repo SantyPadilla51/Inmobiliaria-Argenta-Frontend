@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AgendarVisita } from "../pages/AgendarVisita";
 import { MapByAddress } from "./Map";
-import type { Propiedad } from "../actions/propiedades";
+import type { Propiedad } from "../../interfaces/Propiedad";
 import GaleriaPropiedad from "./GaleriaPropiedad";
 import CustomHeader from "./CustomHeader";
 import CustomCard from "./CustomCard";
