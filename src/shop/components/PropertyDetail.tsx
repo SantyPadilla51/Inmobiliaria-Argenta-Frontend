@@ -94,8 +94,8 @@ export function PropertyDetail() {
 
       <GaleriaPropiedad prop={prop} />
 
-      <main className="max-w-300 mx-auto px-4 mt-8 lg:grid lg:grid-cols-3 gap-12">
-        <aside className="w-full lg:w-90 mb-15 lg:col-start-3 lg:col-end-5">
+      <main className="max-w-300 mx-auto px-4 mt-8 grid grid-rows-1 lg:grid lg:grid-cols-3 gap-12">
+        <aside className="w-full row-start-2 row-end-3 lg:w-90  lg:col-start-3 lg:col-end-5">
           <div>
             <Card className="shadow-2xl border-slate-100 rounded-none overflow-hidden">
               <CardContent className="p-8 space-y-6">
@@ -204,8 +204,10 @@ export function PropertyDetail() {
           </div>
         </div>
 
-        <div className="w-full col-start-1 col-end-4 z-10">
-          <h1 className="mb-3">Ubicación de la Propiedad</h1>
+        <div className="w-full row-start-3 row-end-4 lg:col-start-1 lg:col-end-4 z-10">
+          <h1 className="mb-3 text-2xl font-bold text-slate-900">
+            Ubicación de la Propiedad
+          </h1>
           <div
             style={{
               border: "1px solid #ccc",
@@ -217,7 +219,7 @@ export function PropertyDetail() {
           </div>
         </div>
 
-        <div className="lg:col-span-3 sm:col-span-2 mt-6 pt-12 border-t border-slate-100 pb-20">
+        <div className=" lg:col-span-3 sm:col-span-2 mt-6 pt-12 border-t border-slate-100 pb-20">
           <h2 className="text-2xl font-bold">
             Propiedades similares que te pueden interesar
           </h2>
