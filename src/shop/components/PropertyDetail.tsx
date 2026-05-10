@@ -95,7 +95,7 @@ export function PropertyDetail() {
       <GaleriaPropiedad prop={prop} />
 
       <main className="max-w-300 mx-auto px-4 mt-8 grid grid-rows-1 lg:grid lg:grid-cols-3 gap-12">
-        <aside className="w-full row-start-2 row-end-3 lg:w-90  lg:col-start-3 lg:col-end-5">
+        <aside className="w-full row-start-2 row-end-3 lg:row-start-1 lg:w-90  lg:col-start-3 lg:col-end-5">
           <div>
             <Card className="shadow-2xl border-slate-100 rounded-none overflow-hidden">
               <CardContent className="p-8 space-y-6">

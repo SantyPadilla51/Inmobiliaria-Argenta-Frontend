@@ -19,7 +19,7 @@ export const MapByAddress = ({ address }: { address: string }) => {
     const fetchCoords = async () => {
       try {
         const response = await fetch(
-          `/nominatim/search?format=json&q=${encodeURIComponent(address)}&viewbox=-59.0,-35.0,-57.5,-34.0&bounded=1`,
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&viewbox=-59.0,-35.0,-57.5,-34.0&bounded=1`,
           {
             headers: {
               "User-Agent": "InmobiliariaArgentaApp/1.0",
