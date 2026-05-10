@@ -95,7 +95,31 @@ export function PropertyDetail() {
       <GaleriaPropiedad prop={prop} />
 
       <main className="max-w-300 mx-auto px-4 mt-8 lg:grid lg:grid-cols-3 gap-12">
-        <div className="lg:col-span-2 space-y-8">
+        <aside className="w-full lg:w-90 mb-15 lg:col-start-3 lg:col-end-5">
+          <div>
+            <Card className="shadow-2xl border-slate-100 rounded-none overflow-hidden">
+              <CardContent className="p-8 space-y-6">
+                <div className="space-y-1">
+                  <p className=" font-medium italic text-white">
+                    Precio de {prop.operacion}
+                  </p>
+                  <p className="text-3xl lg:text-5xl font-black text-white">
+                    $ {formatCurrency(prop.precio)}
+                  </p>
+                  <p className="text-sm text-green-600 font-bold tracking-tight mt-2">
+                    Valor de expensas $ {formatCurrency(prop.expensas)}
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <AgendarVisita title={prop.titulo} />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </aside>
+
+        <div className=" lg:row-start-1 lg:col-span-2 space-y-8">
           <div>
             <Badge className="bg-blue-100 text-blue-600 border border-blue-700 hover:bg-blue-100  px-4 py-1 capitalize">
               {prop.operacion}
@@ -152,7 +176,7 @@ export function PropertyDetail() {
             </div>
           </div>
 
-          <div className="w-80 lg:space-y-4">
+          <div className="w-80 lg:w-full lg:space-y-4">
             <h3 className="text-2xl font-bold text-slate-900">Descripción</h3>
             <p className="text-slate-600 leading-relaxed text-lg">
               {prop.descripcion}
@@ -178,30 +202,6 @@ export function PropertyDetail() {
                 : null}
             </div>
           </div>
-
-          <aside className="w-full mb-15 lg:col-span-1">
-            <div className="lg:sticky lg:top-28">
-              <Card className="shadow-2xl border-slate-100 rounded-none overflow-hidden">
-                <CardContent className="p-8 space-y-6">
-                  <div className="space-y-1">
-                    <p className=" font-medium italic text-white">
-                      Precio de {prop.operacion}
-                    </p>
-                    <p className="text-3xl lg:text-5xl font-black text-white">
-                      $ {formatCurrency(prop.precio)}
-                    </p>
-                    <p className="text-sm text-green-600 font-bold tracking-tight mt-2">
-                      Valor de expensas $ {formatCurrency(prop.expensas)}
-                    </p>
-                  </div>
-
-                  <div className="space-y-4 pt-4 border-t border-slate-100">
-                    <AgendarVisita title={prop.titulo} />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </aside>
         </div>
 
         <div className="w-full col-start-1 col-end-4 z-10">
