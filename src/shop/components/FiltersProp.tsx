@@ -18,7 +18,7 @@ const FiltersProp = () => {
 
   const operacionSeleccionada = searchParams.get("operacion");
   const tipoSeleccionado = searchParams.get("tipo");
-  const barrio = searchParams.get("barrio") || "";
+  const barrio = searchParams.get("barrio");
 
   useEffect(() => {
     if (!searchParams.get("operacion")) {

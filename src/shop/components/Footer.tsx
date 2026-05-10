@@ -15,7 +15,7 @@ const Footer = () => {
               className="flex items-center gap-2 transition-opacity hover:opacity-90"
             >
               <span className="font-bold text-xl tracking-tight ">
-                Villella<span className="text-white"> Propiedades</span>
+                Inmobiliaria Argenta
               </span>
             </Link>
             <p className="text-sm leading-relaxed">
@@ -35,7 +35,7 @@ const Footer = () => {
                 to="/?operacion=venta"
                 className="text-sm  hover:text-primary transition-colors"
               >
-                Propiedades en Venta
+                Venta
               </Link>
               <Link
                 to="/?operacion=alquiler"
@@ -48,12 +48,6 @@ const Footer = () => {
                 className="text-sm  hover:text-primary transition-colors"
               >
                 Tasaciones
-              </Link>
-              <Link
-                to="/nosotros"
-                className="text-sm  hover:text-primary transition-colors"
-              >
-                Sobre Nosotros
               </Link>
             </nav>
           </div>
@@ -110,7 +104,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-xs ">
-            © {currentYear} Villella Propiedades. Todos los derechos reservados.
+            © {currentYear} Inmobiliaria Argenta. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-1 opacity-50">
             <span className="text-[10px] font-mono uppercase tracking-tighter italic">

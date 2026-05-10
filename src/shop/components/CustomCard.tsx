@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPropiedades } from "../actions/propiedades";
-import type { Propiedad } from "../actions/propiedades";
+import type { Propiedad } from "../../interfaces/Propiedad";
 import {
   Card,
   CardDescription,
@@ -12,12 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link, useSearchParams } from "react-router-dom";
 import { PropiedadFoto } from "../components/PropiedadFoto";
-
-interface CustomCardProps {
-  barrio?: string;
-  tipo?: string;
-  operacion?: string;
-}
+import type { CustomCardProps } from "@/interfaces/CustomCardProps";
 
 const CustomCard = ({ barrio, tipo, operacion }: CustomCardProps) => {
   const [propiedades, setPropiedades] = useState<Propiedad[]>([]);
