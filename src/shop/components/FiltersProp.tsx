@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
@@ -19,15 +19,6 @@ const FiltersProp = () => {
   const operacionSeleccionada = searchParams.get("operacion");
   const tipoSeleccionado = searchParams.get("tipo");
   const barrio = searchParams.get("barrio");
-
-  useEffect(() => {
-    if (!searchParams.get("operacion")) {
-      const params = new URLSearchParams(searchParams);
-      params.set("operacion", "alquiler");
-
-      setSearchParams(params, { replace: true });
-    }
-  }, [searchParams, setSearchParams]);
 
   const updateFilter = useCallback(
     (name: string, value: string | null) => {

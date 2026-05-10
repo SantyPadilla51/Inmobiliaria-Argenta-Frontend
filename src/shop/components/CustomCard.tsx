@@ -18,9 +18,9 @@ const CustomCard = ({ barrio, tipo, operacion }: CustomCardProps) => {
   const [propiedades, setPropiedades] = useState<Propiedad[]>([]);
   const [cargando, setCargando] = useState<boolean>(true);
   const [searchParams] = useSearchParams();
-  const tipoUrl = searchParams.get("tipo") || tipo || "departamento";
-  const barrioUrl = searchParams.get("barrio") || barrio || "";
-  const operacionUrl = searchParams.get("operacion") || operacion || "venta";
+  const tipoUrl = searchParams.get("tipo") || tipo;
+  const barrioUrl = searchParams.get("barrio") || barrio;
+  const operacionUrl = searchParams.get("operacion") || operacion;
 
   useEffect(() => {
     const cargarDatos = async () => {
@@ -34,7 +34,6 @@ const CustomCard = ({ barrio, tipo, operacion }: CustomCardProps) => {
         });
 
         setPropiedades(data);
-        console.log(data);
       } catch (error) {
         console.error("Error al cargar propiedades:", error);
       } finally {
