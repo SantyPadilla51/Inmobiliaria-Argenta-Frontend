@@ -76,7 +76,7 @@ const FiltersProp = () => {
           <Label className="text-slate-900 font-bold text-sm uppercase tracking-wider">
             Tipo de Propiedad
           </Label>
-          {["departamento", "ph", "casa"].map((tipo) => {
+          {["departamento", "PH", "casa"].map((tipo) => {
             const isActive = tipoSeleccionado === tipo;
 
             return (
